@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.api.auth.mapper.MemberMapper">
+
+   <insert id="insertMember" parameterType="com.board.api.auth.MemberForm">
+   	insert into member values(member_seq.nextval,#{email},#{pass},#{address},#{name},sysdate)
+   </insert>
+	<select id="selectMember" parameterType="com.board.api.auth.MemberForm" resultType="com.board.api.auth.Member">
+		select * from member where email = #{email} AND pass = #{pass}
+	</select>
+</mapper>

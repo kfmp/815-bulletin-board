@@ -11,8 +11,14 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
-
-
+	<interceptors>
+		<interceptor>
+		 <mapping path="/**"/>
+		 <exclude-mapping path="/member/login"/>
+		 <exclude-mapping path="/member/signup"/>
+		 <beans:bean class="com.board.api.auth.interceptor.LoginInterCeptor"></beans:bean>
+		</interceptor>
+	</interceptors>
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/shop/**" location="file:/C:/Users/won/Desktop/shop/" />
@@ -22,6 +28,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.board.api.*"></context:component-scan>
+	<context:component-scan base-package="com.board.*"></context:component-scan>
+	<context:component-scan base-package="com.board.api.auth"></context:component-scan>
+	
+	
 	
 </beans:beans>
